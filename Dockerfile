@@ -1,6 +1,12 @@
 FROM python:slim
 
-WORKDIR /app
-COPY main.py /app/main.py
 
-CMD ["python main.py"]
+WORKDIR /app
+
+RUN pip3 install flask
+
+ADD main.py .
+
+
+CMD ["main.py"]
+ENTRYPOINT ["python3"]

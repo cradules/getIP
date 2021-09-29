@@ -6,7 +6,7 @@ app = flask.Flask(__name__)
 app.config['DEBUG'] = True
 
 
-def getData():
+def get_data():
     hostname = socket.gethostname()
     ip_address = socket.gethostbyname(hostname)
     return hostname, ip_address
@@ -15,7 +15,7 @@ def getData():
 @app.route('/', methods=['GET'])
 def index():
     try:
-        return jsonify(getData())
+        return jsonify(get_data())
     except Exception as e:
         return jsonify(e)
 
