@@ -1,12 +1,13 @@
 import socket
-import flask
+from flask import Flask
 from flask import jsonify
+import time
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config['DEBUG'] = True
 
 
-def getData():
+def get_data():
     hostname = socket.gethostname()
     ip_address = socket.gethostbyname(hostname)
     return hostname, ip_address
@@ -15,9 +16,11 @@ def getData():
 @app.route('/', methods=['GET'])
 def index():
     try:
-        return jsonify(getData())
+        time.sleep(5)
+        return jsonify(get_data())
     except Exception as e:
         return jsonify(e)
 
 
-app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
