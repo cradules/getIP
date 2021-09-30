@@ -1,6 +1,11 @@
 FROM python:slim
 
-WORKDIR /app
-COPY main.py /app/main.py
 
-CMD ["python main.py"]
+WORKDIR /app
+
+RUN pip3 install flask && \
+    pip3 install gunicorn
+
+ADD . .
+
+ENTRYPOINT ["gunicorn", "-c", "config.wsgi", "wsgi:app"]
