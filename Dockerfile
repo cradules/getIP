@@ -8,4 +8,4 @@ RUN pip3 install flask && \
 
 ADD . .
 
-ENTRYPOINT ["gunicorn", "-c", "config.wsgi", "wsgi:app"]
+ENTRYPOINT ["gunicorn", "-c", "config.py", "wsgi:app"]

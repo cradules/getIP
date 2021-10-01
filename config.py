@@ -11,4 +11,4 @@ def max_workers():
 bind = '0.0.0.0:' + environ.get('PORT', '5000')
 workers = max_workers()
 keepalive = 1
-timeout = 300
+timeout = 30
